@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عقارات القاهرة</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1 id="company-name">Broker</h1>
+    <h2 id="app-name">عقارات القاهرة</h2>
+    <nav>
+      <ul>
+        <li><a href="#" onclick="showLogin()">تسجيل الدخول كمسؤول</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- نموذج تسجيل الدخول -->
+  <section id="admin-login" class="login-section hidden">
+    <h2>تسجيل الدخول</h2>
+    <form onsubmit="adminLogin(event)">
+      <input type="text" id="username" placeholder="اسم المستخدم" required>
+      <input type="password" id="password" placeholder="كلمة المرور" required>
+      <button type="submit">دخول</button>
+    </form>
+    <p id="loginError" class="error-message"></p>
+  </section>
+
+  <!-- قسم إدارة العقارات -->
+  <section id="admin-section" class="hidden">
+    <h2>لوحة التحكم</h2>
+    <form id="propertyForm" onsubmit="submitProperty(event)">
+      <input type="text" id="propertyTitle" placeholder="عنوان العقار" required>
+      <input type="text" id="propertyLocation" placeholder="الموقع" required>
+      <input type="number" id="propertyPrice" placeholder="السعر" required>
+      <input type="number" id="propertySize" placeholder="المساحة (م²)" required>
+      <input type="text" id="propertyImageUrl" placeholder="رابط الصورة" required>
+      <textarea id="propertyDescription" placeholder="وصف العقار"></textarea>
+      <input type="url" id="propertyVideoUrl" placeholder="رابط الفيديو">
+      <button type="submit">حفظ</button>
+    </form>
+    <button onclick="clearProperties()">حذف جميع العقارات</button>
+  </section>
+
+  <!-- فلاتر العقارات -->
+  <section id="filters">
+    <h2>فلترة العقارات</h2>
+    <p>من فضلك، اختر الموقع:</p>
+    <input type="text" id="locationFilter" placeholder="أين ترغب في البحث؟" list="location-options">
+    <datalist id="location-options">
+      <option value="حلوان">
+      <option value="وادي حوف">
+      <option value="حدائق حلوان">
+      <option value="المعصرة">
+    </datalist>
+    <input type="number" id="minPrice" placeholder="السعر الأدنى">
+    <input type="number" id="maxPrice" placeholder="السعر الأعلى">
+    <input type="number" id="minSize" placeholder="المساحة الأدنى (م²)">
+    <button onclick="filterProperties()">تطبيق الفلاتر</button>
+    <button onclick="sortPropertiesByPrice()">ترتيب حسب السعر</button>
+  </section>
+
+  <!-- قائمة العقارات -->
+  <section id="property-list">
+    <h3>العقارات المضافة:</h3>
+    <!-- سيتم إضافة بطاقات العقارات هنا -->
+  </section>
+
+  <footer>
+    <p>&copy; 2024 عقارات القاهرة - Broker</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
